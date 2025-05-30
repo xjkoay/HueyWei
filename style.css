@@ -1,0 +1,91 @@
+body {
+    margin: 0;
+    background-color: #b4e7d9;
+    overflow: hidden;
+  }
+  
+  #game-container {
+    position: relative;
+    width: 800px;
+    height: 600px;
+    background: url('grass_bg.jpg') repeat;
+    margin: 50px auto;
+    border: 5px solid #fff;
+    box-shadow: 0 0 20px #000;
+  }
+  
+  #character {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    top: 280px;
+    left: 100px;
+    transition: top 0.1s, left 0.1s;
+    z-index: 2;
+  }
+  
+  .house {
+    position: absolute;
+    width: 120px;
+    top: 200px;
+    left: 500px;
+    z-index: 1;
+  }
+  
+  .flower {
+    position: absolute;
+    top: 250px;
+    left: 530px;
+    width: 32px;
+    z-index: 2;
+  }
+  
+  .shrine {
+    position: absolute;
+    top: 400px;
+    left: 100px;
+    width: 64px;
+    z-index: 1;
+  }
+  
+  #letter-modal {
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -30%);
+    background: white;
+    border: 3px solid pink;
+    padding: 20px;
+    text-align: center;
+    z-index: 100;
+    box-shadow: 0 0 20px #000;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  #letter-modal button {
+    margin: 10px;
+    font-size: 1.2em;
+    padding: 10px 20px;
+    border: none;
+    background: pink;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  
+  #start-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: pink;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    z-index: 999;
+  }
+  
