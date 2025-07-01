@@ -58,32 +58,40 @@ function playCurrentTrack() {
     currentAudio.pause();
     currentAudio.currentTime = 0;
   }
-  
+
   currentAudio = document.getElementById(musicTracks[currentTrackIndex].id);
   currentAudio.volume = isMuted ? 0 : 0.5;
-  
+
   currentAudio.play().then(() => {
     isPlaying = true;
-    document.getElementById('play-pause-btn').textContent = '⏸️';
+    const btn = document.getElementById('play-pause-btn');
+    btn.querySelector('img').src = 'pause.png';
+    btn.classList.add('playing');
     updateSongTitle();
   }).catch(e => {
     console.log("Audio play failed:", e);
     isPlaying = false;
-    document.getElementById('play-pause-btn').textContent = '▶️';
+    const btn = document.getElementById('play-pause-btn');
+    btn.querySelector('img').src = 'pause.png';
+    btn.classList.remove('playing');
   });
 }
 
 function togglePlayPause() {
   if (!currentAudio) return;
-  
+  const btn = document.getElementById('play-pause-btn');
+  const img = btn.querySelector('img');
+
   if (isPlaying) {
     currentAudio.pause();
     isPlaying = false;
-    document.getElementById('play-pause-btn').textContent = '▶️';
+    img.src = 'pause.png';
+    btn.classList.remove('playing');
   } else {
     currentAudio.play().then(() => {
       isPlaying = true;
-      document.getElementById('play-pause-btn').textContent = '⏸️';
+      img.src = 'pause.png';
+      btn.classList.add('playing');
     }).catch(e => {
       console.log("Audio play failed:", e);
     });
@@ -114,9 +122,9 @@ function setVolume(value) {
 
 function toggleMute() {
   isMuted = !isMuted;
-  const muteBtn = document.getElementById('mute-btn');
-  muteBtn.textContent = isMuted ? '🔇' : '🔊';
-  
+  const img = document.getElementById('mute-btn').querySelector('img');
+  img.src = isMuted ? 'mute.png' : 'volume.png';
+
   if (currentAudio) currentAudio.volume = isMuted ? 0 : 0.5;
   if (gameMusic) gameMusic.volume = isMuted ? 0 : 0.5;
 }
@@ -182,18 +190,27 @@ function generateHeartFlowers() {
   const flowersContainer = document.getElementById('flowers-container');
   if (!flowersContainer) return;
   
+  // Original heart-shaped flowers
   const centerX = 900;
   const centerY = 500;
   const scale = 15;
 
   for (let t = 0; t < Math.PI * 2; t += 0.3) {
     const x = scale * 16 * Math.pow(Math.sin(t), 3);
-    const y = -scale * (13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t));
+    const y = -scale * (13 * Math.cos(t) - 5 * Math.cos(2*t) - 2 * Math.cos(3*t) - Math.cos(4*t));
 
     const flower = document.createElement('div');
     flower.className = 'flower';
     flower.style.left = (centerX + x) + 'px';
     flower.style.top = (centerY + y) + 'px';
+    flowersContainer.appendChild(flower);
+  }
+
+  for (let i = 0; i < 999; i++) {
+    const flower = document.createElement('div');
+    flower.className = 'flower';
+    flower.style.left = (centerX + (Math.random() * 200 - 100)) + 'px';
+    flower.style.top = (centerY + (Math.random() * 200 - 100)) + 'px';
     flowersContainer.appendChild(flower);
   }
 }

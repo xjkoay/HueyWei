@@ -12,43 +12,133 @@ body {
   position: fixed;
   top: 20px;
   right: 20px;
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 15px;
+  background: linear-gradient(145deg, #ffe1ea, #fff0f5);
+  border-radius: 20px;
   padding: 15px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 20px rgba(255, 182, 193, 0.4);
   z-index: 1001;
-  min-width: 250px;
+  width: 140px;
+  height: 140px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  border: 2px solid #ffb6c1;
+  backdrop-filter: blur(10px);
 }
 
+/* Music Info Layout */
+#music-info {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: none !important;
+}
+
+/* Song Title */
 #current-song {
-  font-size: 14px;
-  font-weight: bold;
-  color: #333;
-  margin-bottom: 10px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #d35d6e;
+  margin: 5px auto 10px;
   text-align: center;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-}
-
-#music-controls {
+  width: calc(100% - 20px);
+  padding: 8px 10px;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 12px;
+  border: 1px solid #ffb6c1;
+  font-family: 'Segoe Print', cursive;
+  text-shadow: 0 1px 1px rgba(255,255,255,0.5);
+  box-shadow: 0 2px 8px rgba(255, 182, 193, 0.3);
   display: flex;
   justify-content: center;
-  gap: 10px;
+  align-items: center;
+  gap: 6px;
+}
+
+.note-icon {
+  width: 18px;
+  height: 18px;
+}
+
+/* Music Controls */
+#music-controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
 }
 
 #music-controls button {
-  background: none;
+  background: white;
   border: none;
-  font-size: 20px;
+  font-size: 0;
   cursor: pointer;
-  padding: 5px;
-  border-radius: 5px;
-  transition: background 0.2s ease;
+  padding: 0;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  margin: 0;
+  flex-shrink: 0;
+  overflow: hidden;
 }
 
+#music-controls button img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  margin: 0;
+  padding: 0;
+  vertical-align: middle;
+}
+
+/* Button Hover Glow */
 #music-controls button:hover {
-  background: rgba(255, 105, 180, 0.2);
+  box-shadow: 0 0 8px 3px rgba(255, 182, 193, 0.4);
+  transform: scale(1.1);
+}
+
+/* Pulsing Animation on Play */
+@keyframes pulse {
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255,182,193, 0.5); }
+  70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(255,182,193, 0); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255,182,193, 0); }
+}
+
+#play-pause-btn.playing {
+  animation: pulse 1.5s infinite;
+}
+
+/* Cute wobble animation */
+@keyframes wobble {
+  0%, 100% { transform: rotate(-1deg); }
+  50% { transform: rotate(1deg); }
+}
+
+#current-song:hover {
+  animation: wobble 0.5s ease infinite;
+}
+
+/* Float Text Animation */
+@keyframes floatText {
+  0%, 100% { 
+    transform: translateY(0) rotate(-1deg);
+  }
+  50% { 
+    transform: translateY(-3px) rotate(1deg);
+  }
 }
 
 #game-container {
@@ -96,10 +186,10 @@ body {
 
 .house {
   position: absolute;
-  width: 200px;
-  height: 200px;
-  top: 300px;
-  left: 500px;
+  width: 250px;
+  height: 250px;
+  top: 120px;
+  left: 810px;
   z-index: 5;
   background: url('newhouse.png');
   background-size: contain;
@@ -177,13 +267,13 @@ body {
 }
 
 #space-portal {
-  top: 100px;
-  left: 200px;
+  top: 150px;
+  left: 400px;
 }
 
 #flappy-portal {
-  top: 100px;
-  right: 200px;
+  top: 350px;
+  left: 400px;
 }
 
 /* Modal Styles */
