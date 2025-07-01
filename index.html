@@ -2,24 +2,129 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Love Quest 🌸</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <audio id="bg-music" src="romantic.mp3" loop></audio>
-  <button id="start-btn">Start</button>
+  <button id="start-btn">Start Love Quest 💖</button>
+  
+  <!-- Music Control Panel -->
+  <div id="music-panel">
+    <div id="music-info">
+      <div id="current-song">Loading...</div>
+      <div id="music-controls">
+        <button id="prev-btn">⏮️</button>
+        <button id="play-pause-btn">⏸️</button>
+        <button id="next-btn">⏭️</button>
+        <button id="mute-btn">🔊</button>
+      </div>
+    </div>
+  </div>
+
+  <audio id="bg-music" loop>
+    <source src="valentine.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="bg-music-2" loop>
+    <source src="fallingbehind.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="bg-music-3" loop>
+    <source src="misty.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="space-music" loop>
+    <source src="space_music.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="flappy-music" loop>
+    <source src="flappy_music.mp3" type="audio/mpeg">
+  </audio>
 
   <div id="game-container">
-    <img src="character.png" id="character" />
-    <img src="house.png" class="house" />
-    <img src="flower.png" class="flower" id="flower" />
-    <img src="altar.png" class="shrine" id="shrine" />
+    <div id="character">
+      <img src="character_right.png" class="character-right">
+      <img src="character_left.png" class="character-left hidden">
+    </div>
+    <div class="house"></div>
 
+    <!-- Side Quest Portals -->
+    <div id="space-portal" class="portal" title="Space Adventure">🚀</div>
+    <div id="flappy-portal" class="portal" title="Flying Challenge">🐦</div>
+
+    <div id="flowers-container"></div>
+
+    <!-- Quest Status -->
+    <div class="quest-status">
+      <h3>💝 Love Quest Progress</h3>
+      <div class="quest-item" id="space-quest">
+        <span>🚀</span>
+        <span>Space Adventure</span>
+        <span id="space-status">❌</span>
+      </div>
+      <div class="quest-item" id="flappy-quest">
+        <span>🐦</span>
+        <span>Flying Challenge</span>
+        <span id="flappy-status">❌</span>
+      </div>
+      <div class="quest-item" id="flower-quest">
+        <span>🌹</span>
+        <span>Collect Flower</span>
+        <span id="flower-status">❌</span>
+      </div>
+    </div>
+
+    <!-- Instructions -->
+    <div class="instructions">
+      <h4>🎮 How to Play:</h4>
+      <p>🔸 Use WASD or Arrow Keys to move<br>
+      🔸 Complete both mini-games first<br>
+      🔸 Press E to collect flowers and interact<br>
+      🔸 Press E near house to open letter</p>
+    </div>
+
+    <!-- Letter Modal -->
     <div id="letter-modal" class="hidden">
-      <img src="letter.png" />
+      <img src="letter.png" alt="Love Letter" class="letter-image">
       <p>Will you be my girlfriend? 💖</p>
-      <button onclick="answerYes()">Yes</button>
-      <button onclick="answerNo()">No</button>
+      <button onclick="answerYes()">Yes! 💕</button>
+      <button onclick="answerNo()">Let me think... 🤔</button>
+    </div>
+  </div>
+
+  <!-- Space Game Modal -->
+  <div id="space-modal" class="modal">
+    <div class="modal-content">
+      <button class="close-btn" onclick="closeSpaceGame()">&times;</button>
+      <div id="space-game">
+        <div class="game-start-screen" id="space-start-screen">
+          <h2>🚀 Space Adventure</h2>
+          <p>Destroy 15 asteroids to complete the quest!</p>
+          <p>Use A/D to move, SPACE to shoot</p>
+          <button class="start-game-btn" onclick="startSpaceGameplay()">Start Mission</button>
+        </div>
+        <div class="game-ui">
+          <div>Score: <span id="space-score">0</span></div>
+          <div>Lives: <span id="space-lives">3</span></div>
+        </div>
+        <div class="spaceship" id="spaceship"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Flappy Game Modal -->
+  <div id="flappy-modal" class="modal">
+    <div class="modal-content">
+      <button class="close-btn" onclick="closeFlappyGame()">&times;</button>
+      <div id="flappy-game">
+        <div class="game-start-screen" id="flappy-start-screen">
+          <h2>🐦 Flying Challenge</h2>
+          <p>Score 3 points to complete the quest!</p>
+          <p>Press SPACE or click to fly</p>
+          <button class="start-game-btn" onclick="startFlappyGameplay()">Start Flying</button>
+        </div>
+        <div class="game-ui">
+          <div>Score: <span id="flappy-score">0</span></div>
+        </div>
+        <div class="bird" id="bird"></div>
+      </div>
     </div>
   </div>
 
