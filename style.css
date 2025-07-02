@@ -9,9 +9,9 @@ body {
 
 /* Music Panel */
 #music-panel {
-  position: fixed;
-  top: 20px;
-  right: 20px;
+  position: absolute;
+  top: 15px;
+  left: 15px;
   background: linear-gradient(145deg, #ffe1ea, #fff0f5);
   border-radius: 20px;
   padding: 15px;
@@ -23,7 +23,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  border: 2px solid #ffb6c1;
+  border: 8px solid #ffb6c1;
   backdrop-filter: blur(10px);
 }
 
@@ -50,7 +50,7 @@ body {
   padding: 8px 10px;
   background: rgba(255, 255, 255, 0.85);
   border-radius: 12px;
-  border: 1px solid #ffb6c1;
+  border: 3px solid #ffb6c1;
   font-family: 'Segoe Print', cursive;
   text-shadow: 0 1px 1px rgba(255,255,255,0.5);
   box-shadow: 0 2px 8px rgba(255, 182, 193, 0.3);
@@ -147,7 +147,7 @@ body {
   height: 800px;
   background: url('grass_bg.jpg');
   margin: 50px auto;
-  border: 1px solid #fff;
+  border: 15px solid #fff;
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
   border-radius: 20px;
   overflow: hidden;
@@ -239,8 +239,8 @@ body {
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
-  border: 4px solid #fff;
+  background: linear-gradient(45deg, #a2fb5e, #e9eeee);
+  border: 6px solid #fff;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -259,11 +259,6 @@ body {
 
 .portal:hover {
   transform: scale(1.1);
-}
-
-@keyframes pulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.1); }
 }
 
 #space-portal {
@@ -315,49 +310,155 @@ body {
   z-index: 10;
 }
 
-/* Game Start Screen */
+/* Enhanced Game Start Screen Styling */
 .game-start-screen {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: rgba(255, 255, 255, 0.95);
-  padding: 30px;
-  border-radius: 20px;
+  background: linear-gradient(135deg, #ffdee9 0%, #b5fffc 100%);
+  padding: 40px 45px;
+  border-radius: 25px;
   text-align: center;
   z-index: 100;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25), 0 0 0 3px rgba(255, 255, 255, 0.8);
+  border: 3px solid #ff69b4;
+  backdrop-filter: blur(10px);
+  animation: slideInScale 0.6s ease-out;
+  min-width: 400px;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+@keyframes slideInScale {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -60%) scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
 }
 
 .game-start-screen h2 {
-  color: #333;
-  margin-bottom: 15px;
-  font-size: 24px;
+  color: #d63384;
+  margin: 0 0 15px 0;
+  font-size: 28px;
+  font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', sans-serif;
+  letter-spacing: 0.5px;
 }
 
 .game-start-screen p {
-  color: #666;
+  color: #495057;
   margin: 10px 0;
   font-size: 16px;
+  line-height: 1.6;
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 15px 20px;
+  border-radius: 12px;
+  border-left: 4px solid #ff69b4;
+  text-align: left;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Add cute icons to instructions */
+.game-start-screen p:first-of-type::before {
+  content: "🎯 ";
+  font-size: 18px;
+  margin-right: 8px;
+}
+
+.game-start-screen p:last-of-type::before {
+  content: "🎮 ";
+  font-size: 18px;
+  margin-right: 8px;
 }
 
 .start-game-btn {
-  background: linear-gradient(45deg, #ff69b4, #ff1493);
+  background: linear-gradient(45deg, #69cdff, #3f8bb8);
   color: white;
   border: none;
-  padding: 15px 30px;
+  padding: 16px 35px;
   border-radius: 25px;
   font-size: 18px;
-  font-weight: bold;
+  font-weight: 700;
   cursor: pointer;
-  margin-top: 20px;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  box-shadow: 0 4px 15px rgba(255, 105, 180, 0.3);
+  margin: 15px 0 0 0;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 20px rgba(255, 105, 180, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+  align-self: center;
+}
+
+.start-game-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s;
+}
+
+.start-game-btn:hover::before {
+  left: 100%;
 }
 
 .start-game-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(255, 105, 180, 0.5);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(105, 255, 255, 0.6);
+  background: linear-gradient(45deg, #51a1e2, #88c5e1);
+}
+
+.start-game-btn:active {
+  transform: translateY(-1px) scale(1.02);
+}
+
+/* Special styling for Space Game */
+#space-start-screen {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: 3px solid #4c63d2;
+}
+
+#space-start-screen h2 {
+  color: #ffffff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+#space-start-screen p {
+  background: rgba(255, 255, 255, 0.95);
+  border-left: 4px solid #4c63d2;
+  color: #2c3e50;
+}
+
+/* Special styling for Flappy Game */
+#flappy-start-screen {
+  background: linear-gradient(135deg, #a8edea 0%, #7cc1ec 100%);
+  border: 3px solid #a8e5f0;
+}
+
+#flappy-start-screen h2 {
+  color: #0d6efd;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#flappy-start-screen p {
+  background: rgba(255, 255, 255, 0.9);
+  border-left: 4px solid #2099c9;
+  color: #2c3e50;
 }
 
 /* Space Game Styles */
@@ -383,10 +484,10 @@ body {
 
 .bullet {
   position: absolute;
-  width: 4px;
-  height: 15px;
+  width: 8px;
+  height: 25px;
   background: #00ff00;
-  border-radius: 2px;
+  border-radius: 3px;
   z-index: 5;
 }
 
@@ -411,22 +512,12 @@ body {
   50% { opacity: 1; }
 }
 
-/* Add stars creation function */
-function createStar() {
-  const star = document.createElement('div');
-  star.className = 'star';
-  star.style.left = Math.random() * 800 + 'px';
-  star.style.top = Math.random() * 600 + 'px';
-  star.style.animationDelay = Math.random() * 2 + 's';
-  document.getElementById('space-game').appendChild(star);
-}
-
 /* Flappy Game Styles */
 #flappy-game {
   position: relative;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to bottom, #87CEEB, #98FB98);
+  background: linear-gradient(to bottom, #efeecf, #f39c10);
   overflow: hidden;
 }
 
@@ -436,9 +527,9 @@ function createStar() {
   top: 250px;
   width: 40px;
   height: 40px;
-  background: #FFD700;
+  background: #c890dd;
   border-radius: 50%;
-  border: 3px solid #FFA500;
+  border: 3px solid #dcb1e7;
   z-index: 10;
 }
 
@@ -454,8 +545,8 @@ function createStar() {
 .pipe {
   position: absolute;
   width: 60px;
-  background: #228B22;
-  border: 3px solid #006400;
+  background: #04fb04;
+  border: 3px solid #ffffff;
   z-index: 5;
 }
 
@@ -470,19 +561,6 @@ function createStar() {
 @keyframes float {
   from { transform: translateX(0); }
   to { transform: translateX(-900px); }
-}
-
-/* Add cloud creation function */
-function createCloud() {
-  const cloud = document.createElement('div');
-  cloud.className = 'cloud';
-  const size = 30 + Math.random() * 40;
-  cloud.style.width = size + 'px';
-  cloud.style.height = size * 0.6 + 'px';
-  cloud.style.left = '800px';
-  cloud.style.top = Math.random() * 400 + 'px';
-  cloud.style.animationDelay = Math.random() * 10 + 's';
-  document.getElementById('flappy-game').appendChild(cloud);
 }
 
 /* Game UI */
@@ -584,8 +662,8 @@ function createCloud() {
 
 #start-btn {
   position: absolute;
-  top: 20px;
-  left: 20px;
+  top: 335px;
+  left: 60px;
   padding: 12px 28px;
   font-size: 1.1em;
   background-color: #ef7fb7;

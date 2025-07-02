@@ -7,41 +7,41 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <button id="start-btn">Let's Go 💖</button>
-  
-  <!-- Music Control Panel -->
-  <div id="music-panel">
-    <div id="music-info">
-      <div id="current-song">
-        <img src="music-note.png" class="note-icon" alt="music note">
-        <span id="song-title-text">Loading...</span>
-      </div>
-      <div id="music-controls">
-        <button id="prev-btn"><img src="prev.png" alt="Previous"></button>
-        <button id="play-pause-btn"><img src="pause.png" alt="Play/Pause"></button>
-        <button id="next-btn"><img src="next.png" alt="Next"></button>
-        <button id="mute-btn"><img src="volume.png" alt="Mute"></button>
+  <div id="game-container">
+    <button id="start-btn">Let's Go 💖</button>
+
+    <!-- Music Control Panel -->
+    <div id="music-panel">
+      <div id="music-info">
+        <div id="current-song">
+          <img src="music-note.png" class="note-icon" alt="music note">
+          <span id="song-title-text">Loading...</span>
+        </div>
+        <div id="music-controls">
+          <button id="prev-btn"><img src="prev.png" alt="Previous"></button>
+          <button id="play-pause-btn"><img src="pause.png" alt="Play/Pause"></button>
+          <button id="next-btn"><img src="next.png" alt="Next"></button>
+          <button id="mute-btn"><img src="volume.png" alt="Mute"></button>
+        </div>
       </div>
     </div>
-  </div>
 
-  <audio id="bg-music" loop>
-    <source src="valentine.mp3" type="audio/mpeg">
-  </audio>
-  <audio id="bg-music-2" loop>
-    <source src="fallingbehind.mp3" type="audio/mpeg">
-  </audio>
-  <audio id="bg-music-3" loop>
-    <source src="misty.mp3" type="audio/mpeg">
-  </audio>
-  <audio id="space-music" loop>
-    <source src="space_music.mp3" type="audio/mpeg">
-  </audio>
-  <audio id="flappy-music" loop>
-    <source src="flappy_music.mp3" type="audio/mpeg">
-  </audio>
+    <audio id="bg-music" loop>
+      <source src="valentine.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="bg-music-2" loop>
+      <source src="fallingbehind.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="bg-music-3" loop>
+      <source src="misty.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="space-music" loop>
+      <source src="space_music.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="flappy-music" loop>
+      <source src="flappy_music.mp3" type="audio/mpeg">
+    </audio>
 
-  <div id="game-container">
     <div id="character">
       <img src="character_right.png" class="character-right">
       <img src="character_left.png" class="character-left hidden">
@@ -49,8 +49,12 @@
     <div class="house"></div>
 
     <!-- Side Quest Portals -->
-    <div id="space-portal" class="portal" title="Space Adventure">🚀</div>
-    <div id="flappy-portal" class="portal" title="Flying Challenge">🐦</div>
+    <div id="space-portal" class="portal" title="Space Adventure">
+      <img src="rocket.png" alt="Rocket" class="portal-icon">
+    </div>
+    <div id="flappy-portal" class="portal" title="Flying Challenge">
+      <img src="bird.png" alt="Bird" class="portal-icon">
+    </div>
 
     <div id="flowers-container"></div>
 
